@@ -7,7 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Models (same tables)
 model Courses {
   id            String   @id @default(uuid())
   name          String   @unique
@@ -26,4 +25,21 @@ model Teachers {
   course Courses?
 
   @@map("teachers")
+}
+
+model Authors {
+  id   String @id @default(uuid())
+  name String @unique
+
+  books Books[]
+  @@map("authors")
+}
+
+model Books {
+  id        String  @id @default(uuid())
+  name      String  @unique
+  author_id String
+  author    Authors @relation(fields: [author_id], references: [id])
+
+  @@map("books")
 }
