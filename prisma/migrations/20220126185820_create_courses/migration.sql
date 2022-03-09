@@ -1,5 +1,6 @@
 -- CreateTable
-CREATE TABLE "courses" (
+CREATE TABLE "courses"
+(
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT,
